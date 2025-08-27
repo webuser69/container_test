@@ -29,7 +29,7 @@
                 <button class="snd-btn" onclick="send()">➤</button>
             </div>
 
-                <button class="mic-btn" onclick="voice()">🎙️</button>
+            <button class="mic-btn" onclick="voice()">🎙️</button>
             
             <div id="Menu">
                 <button onclick="takePhoto()">📷 Take Photo</button>
@@ -37,5 +37,14 @@
                 <button onclick="addFile()">📁 Add File</button>
             </div>
         </div>
+
+        <!-- Fix for mobile height issues -->
+        <script>
+        function setVh() {
+            document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+        }
+        window.addEventListener('resize', setVh);
+        window.addEventListener('load', setVh);
+        </script>
     </body>
 </html>
