@@ -5,13 +5,21 @@
   box-sizing: border-box;
 }
 
+/* Full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #fff;
   color: #000;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh;      /* Full viewport height */
+  overflow: hidden;   /* Prevent double scroll */
 }
 
 /* Top Bar */
@@ -35,6 +43,7 @@ body {
 /* Chat Area */
 #container {
   flex: 1;
+  min-height: 0; /* Important for flex scroll on mobile */
   padding: 10px;
   overflow-y: auto;
   display: flex;
@@ -63,6 +72,7 @@ body {
 
 /* Input Area */
 #inputArea {
+  flex-shrink: 0; /* Prevent shrinking */
   display: flex;
   align-items: center;
   gap: 10px;
@@ -110,7 +120,8 @@ body {
 /* Popup Menu */
 #Menu {
   position: absolute;
-  bottom: 65px;
+  bottom: 60px; /* Adjusted so it stays above input */
+  left: 10px;
   display: none;
   flex-direction: column;
   border: 1px solid #ccc;
@@ -167,4 +178,27 @@ body[data-theme="dark"] #Mute,
 body[data-theme="dark"] #Theme {
   background: #444;
   color: #fff;
+}
+
+/* === Mobile-friendly tweaks === */
+@media (max-width: 600px) {
+  #inputArea {
+    flex-wrap: wrap;
+  }
+
+  #input {
+    font-size: 14px;
+    padding: 8px 36px 8px 8px;
+  }
+
+  .mic-btn,
+  .add-file,
+  .snd-btn {
+    font-size: 18px;
+    padding: 6px;
+  }
+
+  #Menu {
+    bottom: 70px; /* keep clear space */
+  }
 }
